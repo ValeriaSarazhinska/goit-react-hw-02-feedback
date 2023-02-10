@@ -11,10 +11,10 @@ class Feedback extends Component {
     bad: 0,
   };
 
-  handleClick = event => {
+  handleClick = key => {
     this.setState(prevState => {
       return {
-        [event.target.name]: prevState[event.target.name] + 1,
+        [key]: prevState[key] + 1,
       };
     });
   };
@@ -25,7 +25,7 @@ class Feedback extends Component {
 
   countPositiveFeedbackPercentage() {
     const total = this.countTotalFeedback();
-    return Math.round((this.state.good / total) * 100);
+    return Math.round((this.state.good / total) * 100 || 0);
   }
 
   render() {
